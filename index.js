@@ -22,7 +22,8 @@ function updateCountdowns() {
     // Mittagspause (10:30)
     const lunchTarget = new Date(now);
     lunchTarget.setHours(10, 30, 0, 0);
-    const lunchDone = now > lunchTarget;
+    const isWeekend = now.getDay() === 6 || now.getDay() === 0;
+    const lunchDone = now > lunchTarget || isWeekend;
     const lunchElem = document.getElementById('lunch');
     if (lunchDone) {
         setDone(lunchElem);
@@ -31,10 +32,10 @@ function updateCountdowns() {
         lunchElem.innerHTML = countdownString(lunchTarget, now);
     }
 
-    // Dienstschluss (15:30)
+// Dienstschluss (15:30)
     const dailyTarget = new Date(now);
     dailyTarget.setHours(15, 30, 0, 0);
-    const dailyDone = now > dailyTarget;
+    const dailyDone = now > dailyTarget || isWeekend;
     const dailyElem = document.getElementById('daily');
     if (dailyDone) {
         setDone(dailyElem);
@@ -76,19 +77,15 @@ function updateCountdowns() {
         setDone(overallElem);
     } else {
         const diffMs = overallTarget - now;
-        const totalDays = Math.floor(diffMs / (1000 * 60 * 60 * 24));
-        const weeksLeft = Math.floor(totalDays / 7);
-
-        let workdays = 0;
-        let tempDate = new Date(now);
-        for (let i = 0; i < totalDays; i++) {
-            tempDate.setDate(tempDate.getDate() + 1);
-            const day = tempDate.getDay();
-            if (day >= 1 && day <= 5) workdays++;
-        }
+        const totalDays = diffMs / (1000 * 60 * 60 * 24);
+        const totalWeeks = totalDays / 7;
+        const totalMonths = totalDays / 30.44; // Durchschnittliche Monatstage
 
         overallElem.className = 'countdown-value';
-        overallElem.innerHTML = `${weeksLeft} Woche(n), ${workdays} Tag(e)`;
+        overallElem.innerHTML =
+            `${totalMonths.toFixed(1).replace('.', ',')} Monat(e)<br>` +
+            `${totalWeeks.toFixed(1).replace('.', ',')} Woche(n)<br>` +
+            `${Math.floor(totalDays)} Tag(e)`;
     }
 }
 

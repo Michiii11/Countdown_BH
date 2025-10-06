@@ -40,6 +40,7 @@ body {
     font-weight: 700;
     color: #2a7cff;
     margin-bottom: 6px;
+    text-align: center;
 }
 
 .countdown-done {
