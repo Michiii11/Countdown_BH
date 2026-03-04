@@ -1,30 +1,37 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8">
-    <title>Bundesheer Countdown</title>
-    <link rel="stylesheet" href="style.css">
-    <script src="index.js" defer></script>
-    <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Countdown</title>
+  <link rel="stylesheet" href="style.css" />
+  <script src="index.js" defer></script>
+  <link rel="shortcut icon" href="assets/icon.png" type="image/x-icon" />
 </head>
 <body>
-    <div class="countdown-container">
-        <div class="countdown-box">
-            <div class="countdown-title">Mittagspause</div>
-            <div id="lunch" class="countdown-value"></div>
-        </div>
-        <div class="countdown-box">
-            <div class="countdown-title">Dienstschluss</div>
-            <div id="daily" class="countdown-value"></div>
-        </div>
-        <div class="countdown-box">
-            <div class="countdown-title">Wochenende</div>
-            <div class="weekly countdown-value"></div>
-        </div>
-        <div class="countdown-box">
-            <div class="countdown-title">Abrüsten</div>
-            <div id="overall" class="countdown-value"></div>
-        </div>
+  <header class="topbar">
+    <div class="brand">Countdown</div>
+    <button id="toggleSettings" class="btn" type="button">⚙️ Einstellungen</button>
+  </header>
+
+  <section id="settings" class="settings hidden" aria-hidden="true">
+    <div class="settings-header">
+      <h2>Einstellungen</h2>
+      <div class="settings-actions">
+        <button id="addSection" class="btn" type="button">+ Section</button>
+        <button id="resetDefaults" class="btn btn-ghost" type="button">Reset</button>
+      </div>
     </div>
+
+    <p class="hint">
+      Änderungen werden automatisch im <b>localStorage</b> gespeichert.
+      Bei „Fixes Datum“ kannst du steuern, ob Monate/Wochen/Tage angezeigt werden,
+      ob Wochenenden mitzählen, und die Anzeige ist so angepasst, dass keine „0 Tage 0 Stunden“-Komik entsteht.
+    </p>
+
+    <div id="sectionsEditor" class="sections-editor"></div>
+  </section>
+
+  <main class="countdown-container" id="countdownContainer" aria-live="polite"></main>
 </body>
 </html>

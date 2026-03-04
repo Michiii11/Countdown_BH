@@ -1,89 +1,243 @@
 body {
-    background: linear-gradient(120deg, #f0f4f8 0%, #d9e7ff 100%);
-    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
-    color: #222;
-    margin: 0;
-    padding: 0;
+  background: linear-gradient(120deg, #f0f4f8 0%, #d9e7ff 100%);
+  font-family: "Segoe UI", "Roboto", Arial, sans-serif;
+  color: #222;
+  margin: 0;
+  padding: 0;
 }
 
+/* Top bar */
+.topbar {
+  max-width: 600px;
+  margin: 20px auto 0;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.brand {
+  font-weight: 800;
+  letter-spacing: 0.5px;
+}
+
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 10px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: default;
+  transform: none;
+}
+
+.btn-ghost {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.btn-danger {
+  background: rgba(255, 230, 230, 0.7);
+  border-color: rgba(255, 0, 0, 0.15);
+}
+
+/* Settings panel */
+.settings {
+  max-width: 600px;
+  margin: 14px auto 0;
+  padding: 16px 12px 6px;
+}
+
+.settings.hidden {
+  display: none;
+}
+
+.settings-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.settings-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.hint {
+  margin: 10px 0 14px;
+  line-height: 1.35;
+  opacity: 0.9;
+}
+
+.sections-editor {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.editor-row {
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 14px;
+}
+
+.editor-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.editor-title {
+  font-weight: 800;
+}
+
+.editor-controls {
+  display: flex;
+  gap: 6px;
+}
+
+.editor-body {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 10px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.92rem;
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.field input[type="text"],
+.field input[type="time"],
+.field input[type="date"],
+.field select {
+  width: 100%;
+  box-sizing: border-box;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.7);
+  font-weight: 600;
+}
+
+.field-inline {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.field-inline label {
+  margin: 0;
+  font-weight: 700;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+/* Countdown cards */
 .countdown-container {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    max-width: 600px;
-    width: 100%;
-    margin: 40px auto;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  max-width: 600px;
+  width: 100%;
+  margin: 18px auto 40px;
+  padding: 0 12px;
 }
 
 .countdown-box {
-    background: rgba(255, 255, 255, 0.25);
-    border-radius: 18px;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.08);
-    backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
-    border: 1px solid rgba(255,255,255,0.3);
-    padding: 24px 32px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  background: rgba(255, 255, 255, 0.25);
+  border-radius: 18px;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 24px 32px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .countdown-title {
-    font-size: 1.2rem;
-    font-weight: bold;
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
+  text-align: center;
 }
 
 .countdown-value {
-    font-size: 2rem;
-    font-weight: 700;
-    color: #2a7cff;
-    margin-bottom: 6px;
-    text-align: center;
+  font-size: 2rem;
+  font-weight: 700;
+  color: #2a7cff;
+  margin-bottom: 6px;
+  text-align: center;
 }
 
 .countdown-done {
-    font-size: 2rem;
-    font-weight: 900;
-    background: #43e97b;
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    letter-spacing: 2px;
-    display: flex;
-    align-items: center;
+  font-size: 2rem;
+  font-weight: 900;
+  background: #43e97b;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  display: flex;
+  align-items: center;
 }
 
-.countdown-done .done-icon {
-    font-size: 2.5rem;
-    filter: drop-shadow(0 0 8px #38f9d7);
-    animation: spin 1.2s linear;
-}
-
+/* Mobile tweaks */
 @media (max-width: 600px) {
-    .countdown-container {
-        max-width: 98vw;
-        gap: 16px;
-        margin: 16px auto;
-    }
+  .topbar { margin-top: 12px; }
+  .countdown-container { max-width: 98vw; gap: 16px; margin: 12px auto 26px; }
+  .countdown-box { padding: 16px 10px; border-radius: 12px; }
+  .countdown-title { font-size: 1rem; margin-bottom: 8px; }
+  .countdown-value, .countdown-done { font-size: 1.3rem; letter-spacing: 1px; }
+  .row { grid-template-columns: 1fr; }
+}
 
-    .countdown-box {
-        padding: 16px 8px;
-        border-radius: 12px;
-    }
 
-    .countdown-title {
-        font-size: 1rem;
-        margin-bottom: 8px;
-    }
+/* Toggle chips (for date display options) */
+.toggle-grid{
+  display:flex;
+  flex-wrap:wrap;
+  gap:8px;
+}
 
-    .countdown-value,
-    .countdown-done {
-        font-size: 1.3rem;
-        letter-spacing: 1px;
-    }
+.chip{
+  display:inline-flex;
+  align-items:center;
+  gap:8px;
+  padding:8px 10px;
+  border-radius:999px;
+  border:1px solid rgba(0,0,0,0.12);
+  background: rgba(255,255,255,0.55);
+  cursor:pointer;
+  user-select:none;
+  font-weight:700;
+}
 
-    .countdown-done .done-icon {
-        font-size: 1.7rem;
-    }
+.chip input{
+  accent-color: auto;
 }
